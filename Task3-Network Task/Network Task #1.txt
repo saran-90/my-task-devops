@@ -1,0 +1,11 @@
+Network Task #1
+# Get me the IP address of a particular domain:
+dig google.com / nslookup guvi.in
+
+# Finding CPU/memory usage of my server
+top -  to check both CPU and Memory percentage
+free - to list the memory status
+
+# Test the connectivity between two nodes
+ping guvi.in
+traceroute guvi.in
