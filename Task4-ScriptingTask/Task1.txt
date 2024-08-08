@@ -1,0 +1,21 @@
+# Create a shell script to print the HTTP error code of guvi.in & print, the success/failure message based on the error code response
+
+#!/bin/bash
+  2 
+  3 # Declaring URL
+  4 URL="http://www.guvi.in"
+  5 
+  6 #Getting http status code
+  7 HTTP_STATUS=$(curl -o /dev/null -s -w "%{http_code}\n" "$URL" ) 
+  8 
+  9 echo "Http status code for guvi.in is ${HTTP_STATUS} "
+ 10 
+ 11 if [[ "$HTTP_STATUS" -ge 200 && "$HTTP_STATUS" -lt 300 ]]; then
+ 12         echo "Success :: The request was successful."
+ 13 elif [[ "$HTTP_STATUS" -ge 300 && "$HTTP_STATUS" -lt 400 ]]; then
+ 14         echo "Client Error: There was an issue with the request."
+ 15 elif [[ "$HTTP_STATUS" -ge 500 && "$HTTP_STATUS" -lt 600 ]]; then
+ 16     echo "Server Error: There was an issue with the server."
+ 17 else
+ 18     echo "Unexpected HTTP Status Code: $HTTP_STATUS"
+ 19 fi
