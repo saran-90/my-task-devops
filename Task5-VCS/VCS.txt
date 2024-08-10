@@ -1,0 +1,12 @@
+Task1: Establish a new directory, populate it with script files, initiate an empty repository on GitHub, convert the local directory into a Git repository, and link it to GitHub for pushing the code into the repository.Perform merge, rebase, stash commands in following github repo.
+
+Step1: Creating new folder called VCS-Task and add some text files.
+Step2: Open terminal in GITREPOSITORY path
+Step3: git init -> to initiate as git repository
+Step4: git add . -> to add all the files in staging area
+Step5: git commit -m "created empty files" -> commiting them to the repository
+Step6: create a new repository in Github called Vcs-Task
+Step7: git remote add origin "https://github.com/saran-90/Vcs-Task.git" -> to link this local repository to remote repository
+Step8: git push -u origin main -> to upload all the files in the remote repository
+Step9: git 
+
