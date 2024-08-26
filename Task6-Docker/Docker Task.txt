@@ -1,0 +1,47 @@
+Docker task: Install docker on EC2 and explore the docker commands (docker images, containers, volumes, network
+
+1. Create new EC2 instances with Ubuntu os
+2. In terminal ssh into Ec2 instance with ubuntu user
+3. Installing docker with referencing offical docker website which are below
+
+# Uninstall conflicting packages:
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+#Install the latest VERSION
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# add ubnutu user to docker group to use docker command without sudo
+sudo usermode -aG docker ubuntu
+newgrp docker
+================================
+Docker Images, containers
+#Docker-1 image -> has the commands to run the containers 
+#Docker-2 image -> has the commands to start stop and delete the containers and images.
+
+=============================
+Docker volume-1 image -> using mysql image from the docker hub
+# docker pull mysql:5.7
+# mkdir mydb -> to copy the data of docker image
+# To see the volume folder--> docker inspect mysql:5.7 -> This will show docker file in json format in that look for volume block
+# docker run --name mydb -d -e MYSQL_ROOT_PASSWORD=secretpass -p 3030:3306 -v /home/ubuntu/mydb:/var/lib/mysql mysql:5.7 -> It will run mysql container, It mounts the host directory to the container directory which is where MYSQL stores it data.  
+# docker exec -it mydb /bin/bash -> to execute the mysql service
+# ls /var/lib/mysql -> it will list the files that are being copied to the local
+
+==========================
+Docker volume-2
+#create mydbdata volume -> docker volume create mydbdata
+#run the mysql and copy the files to the mydbdata -> docker run --name mydb2 -d -e MYSQL_ROOT_PASSWORD=secretpass -p 3030:3306 -v mydbdata:/var/lib/mysql mysql:5.7
