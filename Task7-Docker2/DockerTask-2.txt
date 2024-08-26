@@ -1,0 +1,6 @@
+Create a dockerfile, docker-compose file which when executed must display your basic details in the website.
+
+Docker-1 image: Download the html template to the localhost and create Dockerfile
+Docker-2 image: Creating docker-compose.yml
+Docker-3 image: running docker compose up and showing web results
+
