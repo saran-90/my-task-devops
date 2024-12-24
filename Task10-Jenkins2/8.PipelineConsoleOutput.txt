@@ -1,0 +1,59 @@
+Started by GitHub push by saran-90
+Obtained Jenkinsfile from git git@github.com:saran-90/Jenkins-repo.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Email-Job
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential GitRepoClone
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Email-Job/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url git@github.com:saran-90/Jenkins-repo.git # timeout=10
+Fetching upstream changes from git@github.com:saran-90/Jenkins-repo.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_SSH to set credentials Git Repo clone
+Verifying host key using known hosts file, will automatically accept unseen keys
+ > git fetch --tags --force --progress -- git@github.com:saran-90/Jenkins-repo.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision ce980ff9631b86136ab83efe9a56ff7f19474e51 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ce980ff9631b86136ab83efe9a56ff7f19474e51 # timeout=10
+Commit message: "modified emailext in jenkins file"
+ > git rev-list --no-walk e74844e693919217f527a053c3f64d72f67cc184 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ chmod +x hello-world.sh
+[Pipeline] sh
++ ./hello-world.sh
+Hello world!!
+How are you?
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Build was successful!
+[Pipeline] emailext
+Sending email to: saransp232@gmail.com saransp@gmail.com
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
